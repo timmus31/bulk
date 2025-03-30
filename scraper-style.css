@@ -1,35 +1,7 @@
 .scraper-button {
-    display: block;
-    text-align: center;
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    text-decoration: none;
-    font-weight: bold;
+    background-color: #5fa950;
 }
 
 .scraper-button:hover {
-    background-color: #0056b3;
-}
-
-/* Mini version */
-.scraper-button .logo-mini {
-    display: none;
-}
-
-/* Grande version */
-.scraper-button .logo-lg {
-    display: inline;
-}
-
-/* Quand l'écran est petit, on affiche la version mini */
-@media (max-width: 768px) {
-    .scraper-button .logo-mini {
-        display: inline;
-    }
-    .scraper-button .logo-lg {
-        display: none;
-    }
+    background-color: #399027;
 }
