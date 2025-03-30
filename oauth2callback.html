@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAuth2 Callback</title>
+</head>
+<body>
+    <script>
+        // Extrait le token de l'URL après l'authentification
+        var urlParams = new URLSearchParams(window.location.hash);
+        var token = urlParams.get('access_token');
+        
+        if (token) {
+            // Sauvegarde le token dans localStorage
+            localStorage.setItem('google_oauth_token', token);
+            window.close(); // Ferme la fenêtre après récupération du token
+        } else {
+            alert("Erreur : Aucun token trouvé.");
+        }
+    </script>
+</body>
+</html>
