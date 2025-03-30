@@ -1,7 +1,7 @@
 .scraper-button {
-    background-color: #5fa950;
+    background-color: #5fa950 !important;
 }
 
 .scraper-button:hover {
-    background-color: #399027;
+    background-color: #399027 !important;
 }
