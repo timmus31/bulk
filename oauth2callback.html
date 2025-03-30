@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OAuth2 Callback</title>
+    <title>OAuth Callback</title>
 </head>
 <body>
     <script>
-        // Extrait le token de l'URL après l'authentification
-        var urlParams = new URLSearchParams(window.location.hash);
-        var token = urlParams.get('access_token');
-        
-        if (token) {
-            // Sauvegarde le token dans localStorage
-            localStorage.setItem('google_oauth_token', token);
-            window.close(); // Ferme la fenêtre après récupération du token
+        // Récupérer le paramètre "code" de l'URL après la redirection Google
+        const urlParams = new URLSearchParams(window.location.search);
+        const authCode = urlParams.get("code");
+
+        if (authCode) {
+            // Stocker le code dans le localStorage ou l'envoyer via message à la page principale
+            localStorage.setItem("oauth_code", authCode);
+
+            // Envoyer le code à la page principale via postMessage
+            window.opener.postMessage({ oauth_code: authCode }, "https://v4.banktycoon.com");
+
+            // Fermer la fenêtre après récupération du code
+            window.close();
         } else {
-            alert("Erreur : Aucun token trouvé.");
+            document.body.innerHTML = "<h3>Erreur : Aucun code OAuth reçu.</h3>";
         }
     </script>
 </body>
