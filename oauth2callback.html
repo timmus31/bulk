@@ -7,18 +7,18 @@
 </head>
 <body>
     <script>
-        // Récupérer le paramètre "code" de l'URL après la redirection Google
+        // Récupérer le "code" OAuth depuis l'URL
         const urlParams = new URLSearchParams(window.location.search);
         const authCode = urlParams.get("code");
 
         if (authCode) {
-            // Stocker le code dans le localStorage ou l'envoyer via message à la page principale
+            // Stocker temporairement le code dans le localStorage
             localStorage.setItem("oauth_code", authCode);
 
-            // Envoyer le code à la page principale via postMessage
+            // Envoyer le code au script Tampermonkey via postMessage
             window.opener.postMessage({ oauth_code: authCode }, "https://v4.banktycoon.com");
 
-            // Fermer la fenêtre après récupération du code
+            // Fermer cette page après envoi du code
             window.close();
         } else {
             document.body.innerHTML = "<h3>Erreur : Aucun code OAuth reçu.</h3>";
